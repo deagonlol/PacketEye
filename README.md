@@ -89,3 +89,7 @@ Source layout:
 renderer UI run in a plain browser (`vite --config vite.preview.config.ts`) against real
 analysis data via a mock of the preload API — handy for fast UI iteration without
 launching Electron.
+
+###Next Steps
+
+Add a real time network traffic analyser to mitigate threats in real time as they happen.
