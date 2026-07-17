@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: #f1f2f3;
+  color: #20262b;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid #1f6fae;
+  outline-offset: -1px;
+}
+
+/* Thin scrollbars for the dense data views */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #edf0f2;
+}
+::-webkit-scrollbar-thumb {
+  background: #bbc1c6;
+  border-radius: 0;
+  border: 2px solid #edf0f2;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9da5ac;
+}
+
+/* Keep the packet list's scroll rail permanently visible for large captures. */
+.packet-scroll::-webkit-scrollbar {
+  width: 14px;
+  height: 12px;
+}
+.packet-scroll::-webkit-scrollbar-track {
+  background: #e2e5e7;
+  border-left: 1px solid #c6cacf;
+}
+.packet-scroll::-webkit-scrollbar-thumb {
+  min-height: 32px;
+  background: #9ea6ad;
+  border: 3px solid #e2e5e7;
+}
+.packet-scroll::-webkit-scrollbar-thumb:hover {
+  background: #747e86;
+}
+
+/* Draggable title bar region on macOS hidden-inset */
+.titlebar-drag {
+  -webkit-app-region: drag;
+}
+.titlebar-nodrag {
+  -webkit-app-region: no-drag;
+}
+
+@layer components {
+  .card {
+    @apply rounded-[3px] border border-border bg-bg-panel shadow-panel;
+  }
+  .btn {
+    @apply titlebar-nodrag inline-flex items-center justify-center gap-1.5 rounded-[3px] border border-border px-3 py-1.5 text-xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply btn border-[#155c95] bg-accent text-white hover:bg-[#175f98];
+  }
+  .btn-ghost {
+    @apply btn bg-bg-panel text-text-secondary hover:bg-bg-hover hover:text-text-primary;
+  }
+  .input {
+    @apply w-full rounded-[2px] border border-border bg-white px-2.5 py-1.5 text-xs text-text-primary placeholder:text-text-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/20;
+  }
+}
+
+/* Dense data surfaces share one precise, readable treatment. */
+table {
+  border-spacing: 0;
+}
+
+tbody tr {
+  transition: background-color 80ms ease;
+}
+
+tbody td:first-child,
+thead th:first-child {
+  padding-left: 0.75rem;
+}
+
+.workspace-grid {
+  display: none;
+}
+
+.eyebrow {
+  @apply text-[10px] font-semibold uppercase tracking-[0.08em] text-text-muted;
+}
+
+/* Markdown rendering */
+.markdown {
+  @apply text-sm leading-relaxed text-text-secondary;
+}
+.markdown h1 {
+  @apply mb-3 mt-6 text-xl font-semibold text-text-primary;
+}
+.markdown h2 {
+  @apply mb-2 mt-6 border-b border-border-subtle pb-1 text-lg font-semibold text-text-primary;
+}
+.markdown h3 {
+  @apply mb-2 mt-4 text-base font-semibold text-text-primary;
+}
+.markdown p {
+  @apply my-2;
+}
+.markdown ul {
+  @apply my-2 list-disc space-y-1 pl-5;
+}
+.markdown ol {
+  @apply my-2 list-decimal space-y-1 pl-5;
+}
+.markdown code {
+  @apply rounded bg-bg-elevated px-1.5 py-0.5 font-mono text-xs text-accent;
+}
+.markdown pre {
+  @apply my-3 overflow-x-auto rounded-md border border-border-subtle bg-bg-base p-3;
+}
+.markdown pre code {
+  @apply bg-transparent p-0 text-text-secondary;
+}
+.markdown strong {
+  @apply font-semibold text-text-primary;
+}
+.markdown a {
+  @apply text-accent underline;
+}
+.markdown table {
+  @apply my-3 w-full border-collapse text-xs;
+}
+.markdown th,
+.markdown td {
+  @apply border border-border-subtle px-2 py-1 text-left;
+}
